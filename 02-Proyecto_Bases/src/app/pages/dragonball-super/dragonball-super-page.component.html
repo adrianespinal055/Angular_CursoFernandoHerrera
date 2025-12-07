@@ -4,60 +4,20 @@
   <div class="row">
 
     <div class="col-12 col-sm-6">
-      <h3>Agregar: {{name()}} </h3>
-      <input
-      type="text"
-      class="form-control"
-      placeholder="Nombre"
-      [value]="name()"
-      (change)="name.set(txtName.value)"
-      (input) ="name.set(txtName.value)"
-      #txtName
-      >
+      <!--dragonball-characters-add-->
+      <app-dragonball-character-add
+      (newCharacter)="dragonballService.addCharacter($event)"/> <!--//$ valor del evento emitido-->
 
-
-      <input
-      type="number"
-      class="form-control  mt-2"
-      placeholder="Poder"
-      [value]="poder()"
-      (click)="poder.set(txtPoder.valueAsNumber)"
-      (change) ="poder.set(txtPoder.valueAsNumber)"
-      #txtPoder
-      >
-
-      <button
-      class="mt-2 btn btn-primary"
-      (click)="addCharacter()"
-      >Agregar</button>
+    </div>
 
     </div>
     <div class="row col-sm-6">
-      <h3>Listado</h3>
-      <ul>
-        @for (character of characters(); track character.id; let idx = $index) {
-
-           @if (character.poder > 500) {
-
-            <li>
-              <span>{{idx+1}}-{{character.name}}</span>
-              <strong
-              [class.text-danger] = "character.poder > 9005"
-              [class.text-primary] = "character.poder <= 9005"
-              >
-                ({{character.poder}})</strong>
-            </li>
-
-           }@else {
-            <li><strong>Aqui no hay Nadie.</strong></li>
-           }
-
-        }
-      </ul>
-
+      <dragonball-character-list
+      listName="Listado de personajes"
+      [characters]="dragonballService.characters()"
+      />
 
     </div>
 
-  </div>
 </section>
 

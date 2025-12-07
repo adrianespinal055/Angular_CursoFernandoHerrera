@@ -1,0 +1,21 @@
+<h3>{{listName()}}</h3>
+      <ul>
+        @for (character of characters(); track character.id; let idx = $index) {
+
+           @if (character.poder > 500) {
+
+            <li>
+              <span>{{idx+1}}-{{character.name}}</span>
+              <strong
+              [class.text-danger] = "character.poder > 9005"
+              [class.text-primary] = "character.poder <= 9005"
+              >
+                ({{character.poder}})</strong>
+            </li>
+
+           }@else {
+            <li><strong>Aqui no hay Nadie.</strong></li>
+           }
+
+        }
+      </ul>

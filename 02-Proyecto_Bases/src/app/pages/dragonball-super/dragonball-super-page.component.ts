@@ -1,6 +1,9 @@
 
 
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { CharacterList } from "../../components/dragonball/character-list/character-list";
+import { DragonballCharacterAdd } from "../../components/dragonball/dragonball-character-add/dragonball-character-add";
+import { DragonballService } from '../../services/dragonball.services';
 
 interface Character{
   id:number;
@@ -10,44 +13,23 @@ interface Character{
 
 @Component({
   templateUrl: './dragonball-super-page.component.html',
-  selector:'dragonball-super'
+  selector:'dragonball-super',
+  imports: [CharacterList, DragonballCharacterAdd],
 })
 
 export class DragonBallSuperComponent {
+ constructor(
+  public dragonballService: DragonballService
 
-  name = signal('');
-  poder = signal(0);
+)
+{
 
-
-//arreglos
-characters = signal<Character[]>([
-  {id:1,name:'Goku',poder:9001},
-  {id:1,name:'Gojan',poder:9001},
-]);
-
-
-addCharacter() {
-  if(!this.name() || !this.poder() || this.poder() < 0)
-  {
-    return;
-  }
-
-  const newPersonaje:Character = {
-    id:this.characters().length +1,
-    name:this.name(),
-    poder:this.poder(),
-  };
-
- // this.characters().push(newPersonaje);
-  this.characters.update(
-  (list)=>[...list,newPersonaje])
-
-  this.resetFields();
 }
+public dragonballService1 = inject(DragonballService)
 
-resetFields(){
-  this.name.set('');
-  this.poder.set(0);
+
+addCharacter(){
+  this.dragonballService.addCharacter
 }
 
 }
