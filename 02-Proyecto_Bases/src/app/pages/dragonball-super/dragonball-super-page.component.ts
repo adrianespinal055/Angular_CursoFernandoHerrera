@@ -1,6 +1,6 @@
 
-import { NgClass, NgForOf } from '@angular/common';
-import { Component, computed, OnInit, signal } from '@angular/core';
+
+import { Component, OnInit, signal } from '@angular/core';
 
 interface Character{
   id:number;
@@ -9,12 +9,11 @@ interface Character{
 }
 
 @Component({
-  templateUrl: './dragonball-page.component.html',
-
-
+  templateUrl: './dragonball-super-page.component.html',
+  selector:'dragonball-super'
 })
 
-export class DragonBallComponent {
+export class DragonBallSuperComponent {
 
   name = signal('');
   poder = signal(0);
@@ -23,14 +22,9 @@ export class DragonBallComponent {
 //arreglos
 characters = signal<Character[]>([
   {id:1,name:'Goku',poder:9001},
-
+  {id:1,name:'Gojan',poder:9001},
 ]);
 
-powerclases = computed(()=>{
-  return{
-   'text-danger':true,
-  }
-});
 
 addCharacter() {
   if(!this.name() || !this.poder() || this.poder() < 0)
