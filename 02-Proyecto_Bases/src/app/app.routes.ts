@@ -14,6 +14,6 @@ component: CounterPageComponent
   component: HeroPageComponent
 },{
   path:'**',
-  redirectTo:''
+  redirectTo:''//Redireccionar el caso de escribir algo diferente a la rutas
 }
 ];

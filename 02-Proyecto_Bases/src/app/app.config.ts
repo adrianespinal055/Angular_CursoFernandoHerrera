@@ -1,6 +1,6 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
+import { ApplicationConfig, Component, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter, RouterOutlet } from '@angular/router';
+import { NavbarComponent } from './components/shared/navbar/navbar';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
