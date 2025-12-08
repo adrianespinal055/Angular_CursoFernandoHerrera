@@ -23,10 +23,6 @@ addCharacter() {
     poder:this.poder(),
   };
 
- // this.characters().push(newPersonaje);
-  //this.characters.update(
-  //(list)=>[...list,newPersonaje])
-
   this.newCharacter.emit(newPersonaje)
 
   this.resetFields();
