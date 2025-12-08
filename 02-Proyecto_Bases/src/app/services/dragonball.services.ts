@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 import { Character } from '../interfaces/character.interface';
 
 @Injectable({providedIn: 'root'})
@@ -16,6 +16,13 @@ addCharacter(Personaje:Character) {
     list => [...list, Personaje]
   )
 }
+
+//Efectos para poder disparar una accion secundaria 
+//Solo graba en el local storage
+saveToLocalStorage= effect(()=>{
+  //console.log(`Character count ${this.characters().length}`)
+localStorage.setItem('character', JSON.stringify(this.characters()));
+})
 
 
 }
