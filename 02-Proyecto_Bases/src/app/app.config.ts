@@ -2,11 +2,19 @@ import { ApplicationConfig, Component, provideBrowserGlobalErrorListeners, provi
 import { provideRouter, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/shared/navbar/navbar';
 import { routes } from './app.routes';
+import { LocalizedString } from '@angular/compiler';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes)
+    provideRouter(routes),
+
+    //HashStrategy
+    {
+      provide:LocationStrategy,
+      useClass:HashLocationStrategy,
+    }
   ]
 };
